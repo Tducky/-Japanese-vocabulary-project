@@ -1,0 +1,154 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+<style>
+	.list-content{
+		margin-bottom: 100px;
+	}
+
+
+    th{ 
+        color:#fff;
+				text-align: center
+            }
+		#myTable{
+			text-align: center;
+		}
+
+		.bg-info{
+			/* position:fixed; */
+		}
+
+		#footer {
+  position: fixed;
+  bottom:0px;
+  left: 0px;
+  right: 0px;
+  height: 80px;
+  background-color:white;
+  margin: 0px;
+	text-align: center;
+	border-top: 1px solid;
+	border-radius: 25px;
+}
+
+#nav {
+  margin: 0px;
+  list-style-type: none;
+}
+
+#nav li a:hover{
+	color: yellow;
+}
+
+#nav > li {
+  display: inline-block;
+}
+
+#nav li {
+
+}
+
+#nav li a {
+  color: black;
+  text-decoration: none;
+  line-height: 80px;
+  padding: 13px 46px;
+  /* display: block; */
+	background: aqua;
+  border-radius: 1.5rem;
+  background: #00aaff;
+  box-shadow: 0 4px 0 #0088cc;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+ 
+}
+
+</style>
+
+<div class="list-content">
+	<table class="table table-striped">
+			<tr  class="bg-info">
+					<th>番号</th>
+					<th>語彙</th>
+					<th>読み方</th>
+					<th>意味</th>
+			</tr>
+	
+			<tbody id="myTable">
+					
+			</tbody>
+	</table>
+</div>
+<div id="footer">
+	<ul id="nav">
+      <li><a href="/category2/Flashcard-read/Flashcard-read.html">Flashcard　読み方</a></li>
+      <li><a href="/category2/Flashcard-mean/Flashcard-mean.html">Flashcard　意味</a></li>
+      <li><a href="/category2/training/training.html">　 練習問題 　</a></li>
+	</ul>
+</div>
+<script>
+	var myArray = [
+	{'number':'1','text':'飯を食う','read':'ごはんをくう','mean':'ĂN CƠM'},
+{'number':'2','text':'かじる','read':'かじる','mean':'NHAI'},
+{'number':'3','text':'含む','read':'ふくむ','mean':'BAO GỒM'},
+{'number':'4','text':'あめをしゃぶる','read':'あめをしゃぶる','mean':'MÚT KẸO'},
+{'number':'5','text':'味わう','read':'あじわう','mean':'NÊM, NẾM'},
+{'number':'6','text':'香りをかぐ','read':'かおりをかぐ','mean':'NGỬI HƯƠNG THƠM'},
+{'number':'7','text':'食欲がない','read':'いんしょくがない','mean':'CHÁN ĂN'},
+{'number':'8','text':'湯飲み','read':'ゆのみ','mean':'TÁCH TRÀ'},
+{'number':'9','text':'お盆','read':'おぼん','mean':'MÂM, KHAY'},
+{'number':'10','text':'栄養をとる','read':'えいようをとる','mean':'DINH DƯỠNG'},
+{'number':'11','text':'消化','read':'しょうか','mean':'TIÊU HOÁ'},
+{'number':'12','text':'食事が胃にもたれる','read':'いにもたれる','mean':'KHÓ TIÊU THỨC ĂN'},
+{'number':'13','text':'宴会','read':'えんかい','mean':'BỮA TIỆC'},
+{'number':'14','text':'お酒を注ぐ','read':'そそぐ','mean':'RÓT RƯỢU'},
+{'number':'15','text':'お酒を勧める','read':'すすめる','mean':'MỜI RƯỢU'},
+{'number':'16','text':'酔う','read':'よう','mean':'SAY RƯỢU'},
+{'number':'17','text':'頭痛がする','read':'ずつう','mean':'ĐAU ĐẦU'},
+{'number':'18','text':'吐き気がする','read':'はきけがする','mean':'NÔN'},
+{'number':'19','text':'贅沢な材料','read':'ぜいたく','mean':'XA XỈ'},
+{'number':'20','text':'粗末な材料','read':'そまつ','mean':'ĐƠN GIẢN'},
+{'number':'21','text':'貴重','read':'きちょう','mean':'QÚI TRỌNG'},
+{'number':'22','text':'新鮮','read':'しんせん','mean':'TƯƠI, MỚI'},
+{'number':'23','text':'原産','read':'げんさん','mean':'NƠI SẢN XUẤT'},
+{'number':'24','text':'調味料','read':'ちょうみりょう','mean':'GIA VỊ'},
+{'number':'25','text':'酢','read':'す','mean':'DẤM・NƯỚC TƯƠNG'},
+{'number':'26','text':'塩辛い','read':'しおからい','mean':'MẶN'},
+{'number':'27','text':'酸っぱい','read':'よっぱらい','mean':'SAY XỈN'},
+{'number':'28','text':'さっぱりした','read':'さっぱりした','mean':'NHẠT'},
+{'number':'29','text':'しつこい・くどい','read':'しつこい・くどい','mean':'NỒNG, ĐẶC'},
+{'number':'30','text':'好き嫌い','read':'すききらい','mean':'THÍCH VÀ GHÉT'},
+{'number':'31','text':'行列','read':'ぎょうれつ','mean':'XẾP HÀNG'},
+{'number':'32','text':'めまいがする','read':'めまいがする','mean':'CHÓNG MẶT'},
+{'number':'33','text':'意識を失う','read':'いしきがうしなう','mean':'MẤT Ý THỨC'},
+{'number':'34','text':'酔いがさめる','read':'酔いがさめる','mean':'TỈNH RƯỢU'},
+{'number':'35','text':'刺身をつまむ','read':'さしみをつかむ','mean':'KHẮP CÁ SỐNG'},
+{'number':'36','text':'しょう油','read':'しょうゆ','mean':'NƯỚC TƯƠNG'},
+{'number':'37','text':'こしょう','read':'こしょう','mean':'TIÊU'},
+{'number':'38','text':'しょっぱい','read':'しょっぱい','mean':'MẶN'},
+
+	]
+	
+	buildTable(myArray)
+	
+	function buildTable(data){
+		var table = document.getElementById('myTable')
+
+		for (var i = 0; i < data.length; i++){
+			var row = `<tr>
+							<td>${data[i].number}</td>
+							<td>${data[i].text}</td>
+							<td>${data[i].read}</td>
+							<td>${data[i].mean}</td>
+					  </tr>`
+			table.innerHTML += row
+
+
+		}
+	}
+
+</script>

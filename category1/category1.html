@@ -1,0 +1,142 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+<style>
+	/* h1{
+		text-align: center;
+		background:#ccc;
+
+	} */
+	.list-content{
+		margin-bottom: 100px;
+	}
+
+
+    th{ 
+        color:#fff;
+				text-align: center
+            }
+		#myTable{
+			text-align: center;
+		}
+
+		.bg-info{
+		}
+
+		#footer {
+  position: fixed;
+  bottom:0px;
+  left: 0px;
+  right: 0px;
+  height: 80px;
+  background-color:white;
+  margin: 0px;
+	text-align: center;
+	border-top: 1px solid;
+	border-radius: 25px;
+}
+
+#nav {
+  margin: 0px;
+  list-style-type: none;
+}
+
+#nav li a:hover{
+	color: yellow;
+}
+
+#nav > li {
+  display: inline-block;
+}
+
+#nav li {
+
+}
+
+#nav li a {
+  color: black;
+  text-decoration: none;
+  line-height: 80px;
+  padding: 13px 46px;
+	background: aqua;
+  border-radius: 1.5rem;
+  background: #00aaff;
+  box-shadow: 0 4px 0 #0088cc;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+ 
+}
+
+</style>
+
+<div class="list-content">
+	<!-- <h1>親類・友人・知</h1> -->
+	<table class="table table-striped">
+			<tr  class="bg-info">
+					<th>番号</th>
+					<th>語彙</th>
+					<th>読み方</th>
+					<th>意味</th>
+			</tr>
+	
+			<tbody id="myTable">
+					
+			</tbody>
+	</table>
+</div>
+<div id="footer">
+	<ul id="nav">
+      <li><a href="/category1/Flashcard-read/Flashcard-read.html">Flashcard　読み方</a></li>
+      <li><a href="/category1/Flashcard-mean/Flashcard-mean.html">Flashcard　意味</a></li>
+      <li><a href="/category1/training/training.html">　 練習問題 　</a></li>
+	</ul>
+</div>
+<script>
+	var myArray = [
+{'number':'1','text':'親類','read':'しょるい','mean':'HỒ SƠ'},
+{'number':'2','text':'子孫','read':'しそん','mean':'CON CHÁU'},
+{'number':'3','text':'親孝行','read':'おやこうこう','mean':'HIẾU THẢO'},
+{'number':'4','text':'実家','read':'じっか','mean':'QUÊ HƯƠNG'},
+{'number':'5','text':'末っ子','read':'すえっこ','mean':'CON ÚT'},
+{'number':'6','text':'双子','read':'ふたご','mean':'SINH ĐÔI'},
+{'number':'7','text':'知人','read':'ちじん','mean':'NGƯỜI QUEN'},
+{'number':'8','text':'夫妻','read':'ふさい','mean':'VỢ CHỒNG'},
+{'number':'9','text':'付き合い','read':'つきあい','mean':'SỰ KẾT HỢP'},
+{'number':'10','text':'言葉遣い','read':'ことばづかい','mean':'CÁCH DÙNG TỪ'},
+{'number':'11','text':'気遣い','read':'きづかい','mean':'SỰ LO LẮNG'},
+{'number':'12','text':'握手する','read':'はあくする','mean':'NẮM BẮT'},
+{'number':'13','text':'お辞儀をする','read':'おじぎする','mean':'CÚI CHÀO'},
+{'number':'14','text':'たとえ','read':'たとえ','mean':'DÙ, CHO DÙ'},
+{'number':'15','text':'長年','read':'ながねん','mean':'NHIỀU NĂM'},
+{'number':'16','text':'ちっとも','read':'ちっとも','mean':'MỘT CHÚT'},
+{'number':'17','text':'仕事仲間','read':'しごとなかま','mean':'ĐỒNG NGHIỆP'},
+{'number':'18','text':'勉強仲間','read':'べんきょうなかま','mean':'BẠN HỌC'},
+{'number':'19','text':'飲み仲間','read':'のみなかま','mean':'BẠN NHẬU'},
+{'number':'20','text':'知り合い','read':'しりあい','mean':'NGƯỜI QUEN'},
+{'number':'21','text':'話し合い','read':'はなしあい','mean':'THẢO LUẬN'},
+{'number':'22','text':'金遣い','read':'かねづかい','mean':'CÁCH TIÊU TIỀN'},
+
+	]
+	
+	buildTable(myArray)
+	
+	function buildTable(data){
+		var table = document.getElementById('myTable')
+
+		for (var i = 0; i < data.length; i++){
+			var row = `<tr>
+							<td>${data[i].number}</td>
+							<td>${data[i].text}</td>
+							<td>${data[i].read}</td>
+							<td>${data[i].mean}</td>
+					  </tr>`
+			table.innerHTML += row
+
+
+		}
+	}
+
+</script>

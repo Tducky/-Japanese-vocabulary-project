@@ -1,0 +1,165 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+<style>
+	.list-content{
+		margin-bottom: 100px;
+	}
+
+
+    th{ 
+        color:#fff;
+				text-align: center
+            }
+		#myTable{
+			text-align: center;
+		}
+
+		.bg-info{
+			/* position:fixed; */
+		}
+
+		#footer {
+  position: fixed;
+  bottom:0px;
+  left: 0px;
+  right: 0px;
+  height: 80px;
+  background-color:white;
+  margin: 0px;
+	text-align: center;
+	border-top: 1px solid;
+	border-radius: 25px;
+}
+
+#nav {
+  margin: 0px;
+  list-style-type: none;
+}
+
+#nav li a:hover{
+	color: yellow;
+}
+
+#nav > li {
+  display: inline-block;
+}
+
+#nav li {
+
+}
+
+#nav li a {
+  color: black;
+  text-decoration: none;
+  line-height: 80px;
+  padding: 13px 46px;
+  /* display: block; */
+	background: aqua;
+  border-radius: 1.5rem;
+  background: #00aaff;
+  box-shadow: 0 4px 0 #0088cc;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+ 
+}
+
+</style>
+
+<div class="list-content">
+	<table class="table table-striped">
+			<tr  class="bg-info">
+					<th>番号</th>
+					<th>語彙</th>
+					<th>読み方</th>
+					<th>意味</th>
+			</tr>
+	
+			<tbody id="myTable">
+					
+			</tbody>
+	</table>
+</div>
+<div id="footer">
+	<ul id="nav">
+      <li><a href="/category3/Flashcard-read/Flashcard-read.html">Flashcard　読み方</a></li>
+      <li><a href="/category3/Flashcard-mean/Flashcard-mean.html">Flashcard　意味</a></li>
+      <li><a href="/category3/training/training.html">　 練習問題 　</a></li>
+	</ul>
+</div>
+<script>
+	var myArray = [
+{'number':'1','text':'崩す','read':'くずす','mean':'PHÁ HUỶ'},
+{'number':'2','text':'インフルエンザにかかる','read':'インフルエンザにかかる','mean':'CẢM CÚM'},
+{'number':'3','text':'ウイルスが伝染する','read':'ウイルスがだんせんする','mean':'TRUYỀN NHIỄM'},
+{'number':'4','text':'骨折する','read':'こっせつ','mean':'GÃY XƯƠNG'},
+{'number':'5','text':'高血圧','read':'こうけつあつ','mean':'HUYẾT ÁP CAO'},
+{'number':'6','text':'疲れがたまる','read':'つかれがたまる','mean':'MỆT MỎI'},
+{'number':'7','text':'肩をもむ','read':'かたをもむ','mean':'XOA BÓP VAI'},
+{'number':'8','text':'白髪が抜ける','read':'しらががぬける','mean':'RỤNG TÓC BẠC'},
+{'number':'9','text':'ひねる・ねじる','read':'ひねる・ねじる','mean':'VẶN'},
+{'number':'10','text':'顔が青白い','read':'かおがあおい','mean':'MẶT TÁI XANH'},
+{'number':'11','text':'苦痛','read':'くつう','mean':'ĐAU ĐỚN'},
+{'number':'12','text':'しびれる','read':'しびれる','mean':'TÊ LIỆT'},
+{'number':'13','text':'薬局','read':'やっきょく','mean':'HIỆU THUỐC'},
+{'number':'14','text':'診る・診察する','read':'みる・しんさつする','mean':'KHÁM BỆNH'},
+{'number':'15','text':'診断する','read':'しんだん','mean':'CHUẨN ĐOÁN'},
+{'number':'16','text':'内科','read':'ないか','mean':'NỘI KHOA'},
+{'number':'17','text':'外科','read':'がいか','mean':'NGOẠI KHOA'},
+{'number':'18','text':' 赤ちゃんがはう','read':'あかちゃんがはう','mean':'BÉ BÒ'},
+{'number':'19','text':'もたれる','read':'もたれる','mean':'KHÓ TIÊU'},
+{'number':'20','text':'しゃがむ','read':'しゃがむ','mean':'NGỒI XỔM'},
+{'number':'21','text':'腰掛ける','read':'こしかける','mean':'NGỒI'},
+{'number':'22','text':'余分な栄養','read':'よぶんなえいよう','mean':'THỪA'},
+{'number':'23','text':'予防する','read':'よぼうする','mean':'DỰ PHÒNG'},
+{'number':'24','text':'休養をとる','read':'きゅうようをとる','mean':'NGHỈ NGƠI'},
+{'number':'25','text':'消毒する','read':'しょうどくする','mean':'KHỬ ĐỘC'},
+{'number':'26','text':'衛生的な','read':'えいせいてきな','mean':'TÍNH VỆ SINH'},
+{'number':'27','text':'徹夜する','read':'徹夜する','mean':'THỨC TRẮNG ĐÊM'},
+{'number':'28','text':'睡眠不足','read':'すいみんぶそく','mean':'THIẾU NGỦ'},
+{'number':'29','text':'健康を管理する','read':'けんこうをかんりする','mean':'QUẢN LÍ SỨC KHOẺ'},
+{'number':'30','text':'せき','read':'せき','mean':'HO'},
+{'number':'31','text':'不規則な','read':'ふきそくな','mean':'BẤT QUI TẮC'},
+{'number':'32','text':'平均寿命','read':'へいきんじゅみょう','mean':'TUỔI THỌ TRUNG BÌNH'},
+{'number':'33','text':'美容','read':'びよう','mean':'NHAN SẮC'},
+{'number':'34','text':'肌が荒れる','read':'はだがあれる','mean':'DA KHÔ'},
+{'number':'35','text':'かみそり','read':'かみそり','mean':'DAO CẠO RÂU'},
+{'number':'36','text':'ひげをそる','read':'ひげをそる','mean':'CẠO RÂU'},
+{'number':'37','text':'くし・ブラシ','read':'くし・ブラシ','mean':'CÁL LƯỢC'},
+{'number':'38','text':'とく・とかす','read':'とく・とかす','mean':'NUNG NÓNG'},
+{'number':'39','text':'看病する ','read':'かんびょう','mean':'CHĂM SÓC BỆNH NHÂN'},
+{'number':'40','text':'しゃっくりが出る','read':'しゃっくりがでる','mean':'NẤC'},
+{'number':'41','text':'高血圧','read':'こうけつあつ','mean':'HUYÊT ÁP CAO'},
+{'number':'42','text':'立ち上がる','read':'たちあがる','mean':'ĐỨNG LÊN'},
+{'number':'43','text':'寝不足','read':'ねぶそく','mean':'THIẾU NGỦ'},
+{'number':'44','text':'運動不足','read':'うんどうぶそく','mean':'THIẾU VẬN ĐỘNG'},
+{'number':'45','text':'平均点','read':'へいきんてん','mean':'ĐIỂM TRUNG BÌNH'},
+{'number':'46','text':'一応','read':'いちおう','mean':'TẠM THỜI'},
+{'number':'47','text':'当分','read':'とうぶん','mean':'HIỆN TẠI'},
+{'number':'48','text':'たちまち','read':'たちまち','mean':'ĐỘT NHIÊN'},
+{'number':'49','text':'今に','read':'いまに','mean':'SẮP'},
+
+	]
+	
+	buildTable(myArray)
+	
+	function buildTable(data){
+		var table = document.getElementById('myTable')
+
+		for (var i = 0; i < data.length; i++){
+			var row = `<tr>
+							<td>${data[i].number}</td>
+							<td>${data[i].text}</td>
+							<td>${data[i].read}</td>
+							<td>${data[i].mean}</td>
+					  </tr>`
+			table.innerHTML += row
+
+
+		}
+	}
+
+</script>
