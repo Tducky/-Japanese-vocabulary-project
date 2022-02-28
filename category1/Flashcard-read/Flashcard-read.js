@@ -24,6 +24,8 @@
     {'ja':'知り合い','vi':'しりあい'},
     {'ja':'話し合い','vi':'はなしあい'},
     {'ja':'金遣い','vi':'かねづかい'},
+
+
   ];
 
   var card = document.getElementById('card');
